@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-[#0d0714]">
+
+    <div class="container2 m-auto">
+        <div class="flex justify-center items-center w-full h-[100vh]">
+            <div class="w-[700px] max-[800px]:w-[600px] flex flex-col gap-[30px]">
+                <form action="" class="form relative flex w-full justify-between items-center gap-[10px] h-[50px]">
+                    <p class="error absolute hidden top-[-20px] left-[10px] text-[#d15151] bg-[#0d0714] p-[5px]">*Please add something</p>
+                    <input type="text"
+                        class="addTextInput border border-[#fff] outline-none w-full h-full  text-[#fff] rounded-md bg-transparent p-[10px]"
+                        maxlength="55">
+
+                    <button
+                        class="submitBtn h-[50px] w-[50px] active:scale-[.96] text-[#fff] flex justify-center items-center rounded-md bg-[#9e78cf]">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </form>
+
+                <div class="list_container flex flex-col overflow-y-scroll gap-[10px] h-[345px] pr-2 pt-2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="inputForEdit hidden w-full h-[100vh] bg-[#00000054] backdrop-blur-[15px] fixed top-0 left-0 z-10 flex-col gap-[10px] justify-center items-center">
+
+        <form action="" class="editForm flex w-[50%] justify-between items-center gap-[10px] bg-[#473163] p-[20px] h-[200px] relative rounded-md">
+            <i class="fa-solid fa-circle-xmark absolute right-[-13px] top-[-13px] cursor-pointer text-[#fff] text-[25px]"></i>
+            
+            <input type="text"
+                class="editInput border border-[#fff] outline-none w-full text-[#fff] rounded-md bg-transparent h-[50px] p-[10px]"
+                maxlength="45" placeholder="edit">
+
+            <button
+                class="h-[50px] w-[50px] active:scale-[.96] text-[#9e78cf] flex justify-center items-center rounded-md bg-[#fff]">
+                <i class="fa-solid fa-plus"></i>
+            </button>
+        </form>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
