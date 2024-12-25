@@ -132,6 +132,19 @@ function createTaskElement(task) {
     listContainer.appendChild(newDiv);
 }
 
+const searchForm = document.querySelector('.searchForm')
+const searchInput = document.querySelector('.searchInput')
+
+console.log(searchForm, searchInput);
+
+
+function search(id) {
+    searchForm.addEventListener("submit", (e)=> {
+        e.preventDefault()
+        
+    })
+}
+
 function addTime(time) {
     const date = new Date(time);
     const hours = date.getHours();
