@@ -25,7 +25,7 @@ listContainer.addEventListener("click", (e) => {
 
     if (e.target.closest(".delete")) {
         const sure = confirm("Are you sure?");
-        if (sure) deleteItem(taskId, list);
+        if (sure) deleteList(taskId, list);
     }
 
     if (e.target.closest(".edit")) {
@@ -51,7 +51,7 @@ editForm.addEventListener("submit", (e) => {
         editInput.style.borderColor = "#fff";
         editForm.classList.remove("shake");
 
-        updateItem(taskId, editInput.value.trim(), updatedElement);
+        editList(taskId, editInput.value.trim(), updatedElement);
         inputForEdit.classList.add("hidden");
         inputForEdit.classList.remove("flex");
     }
@@ -64,11 +64,11 @@ xMark.addEventListener("click", () => {
 
 
 function getData(data) {
-    data.forEach((task) => createTaskElement(task));
+    data.forEach((task) => createElement(task));
 }
 
-function addItem(taskTitle) {
-    if (taskTitle === "") {
+function addItem(list) {
+    if (list === "") {
         error.classList.remove("hidden");
         error.classList.add("block");
         return;
@@ -76,22 +76,21 @@ function addItem(taskTitle) {
 
     error.classList.add("hidden");
 
-    const currentTime = new Date().toISOString();
 
     fetch(api, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: taskTitle, time: currentTime }),
+        body: JSON.stringify({ title: list }),
     })
         .then((response) => response.json())
         .then((newTask) => {
-            createTaskElement(newTask);
+            createElement(newTask);
             input.value = "";
         })
         .catch((err) => console.error(err.message));
 }
 
-function updateItem(taskId, updatedTitle, element) {
+function editList(taskId, updatedTitle, element) {
     fetch(`${api}/${taskId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -104,7 +103,7 @@ function updateItem(taskId, updatedTitle, element) {
         .catch((err) => console.error(err.message));
 }
 
-function deleteItem(taskId, element) {
+function deleteList(taskId, element) {
     fetch(`${api}/${taskId}`, {
         method: "DELETE",
     })
@@ -114,7 +113,7 @@ function deleteItem(taskId, element) {
         .catch((err) => console.error(err.message));
 }
 
-function createTaskElement(task) {
+function createElement(task) {
     const newDiv = document.createElement("div");
     newDiv.classList.add("list");
     newDiv.id = task.id;
